@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
-import {callInterestingnessGetList} from "@/pages/fetcher/callInterestingnessGetList";
-import Home from "@/pages/components/Home";
+import {callInterestingnessGetList} from "@/fetcher/callInterestingnessGetList";
+import Home from "@/components/Home";
 
 export default function FlickrBrowserIndex() {
   const [interestingList, setInterestingList] = useState([]);
 
-  // @ts-ignore
   useEffect(() => {
-    return async () => {
+    async function fetchData() {
       let photoList = await callInterestingnessGetList()
-      console.log(photoList)
       setInterestingList(photoList)
-    };
+    }
+
+    fetchData().then(() => console.log("Home fetched."));
   }, []);
 
   return (

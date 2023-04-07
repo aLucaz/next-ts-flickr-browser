@@ -1,9 +1,7 @@
-export const CallSearchPhotosByTag = async (tags: string) => {
-  const fetchResponse = await fetch('http://localhost:3000/api/flickrSearchPhotosByTag', {
+export const callInterestingnessGetList = async () => {
+  const fetchResponse = await fetch(`/api/flickrInterestingnessGetList`, {
     method: 'POST',
-    body: JSON.stringify({
-      tags
-    }),
+    body: JSON.stringify({}),
     headers: {
       'Content-Type': 'application/json',
     },
@@ -13,7 +11,5 @@ export const CallSearchPhotosByTag = async (tags: string) => {
     throw new Error(httpResponse.message);
   }
   const flickrData = JSON.parse(httpResponse.text);
-  console.log("OTHER")
-  console.log(flickrData);
-  return  flickrData.photos.photo;
+  return flickrData.photos.photo;
 }

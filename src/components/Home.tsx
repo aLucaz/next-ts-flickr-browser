@@ -1,8 +1,8 @@
 import {Container, Grid} from "@mui/material";
 import {styled} from "@mui/material/styles";
-import Browser from "@/pages/components/Browser";
-import PhotoCard from "@/pages/components/PhotoCard";
-import ScrollToTopButton from "@/pages/components/ScrollToTopButton";
+import Browser from "@/components/Browser";
+import PhotoCard from "@/components/PhotoCard";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import {Photo} from "@/types";
 
 const HeaderStickyGrid = styled(Grid)(() => ({

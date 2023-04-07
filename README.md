@@ -15,6 +15,10 @@ add a .env file in the root with this content
 ```dotenv
 FLICKR_API_KEY=<api key here>
 ```
+install dependencies
+```bash
+npm install
+```
 ### Option  1: Localhost
 ```bash
 npm run dev

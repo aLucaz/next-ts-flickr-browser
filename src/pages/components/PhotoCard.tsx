@@ -52,7 +52,7 @@ export default function PhotoCard({title, url_c, ownername, tags}: Photo) {
           <Grid item xs={12} md={5}>
             <div>
               <Typography variant="h6">
-                {title.length < 40 ? title : title.slice(0, 20) + '...'}
+                {title.length < 30 ? title : title.slice(0, 20) + '...'}
               </Typography>
               <Typography variant="body1">
                 By {ownername.length < 25 ? ownername : ownername.slice(0, 10) + '...'}

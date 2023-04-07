@@ -1,22 +1,31 @@
 import {IconButton, InputBase, Paper} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import {useState} from "react";
-import {CallSearchPhotosByTag} from "@/pages/fetcher/callSearchPhotosByTag";
+import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
 
-export default function Browser({setInterestingList}: any) {
+export default function Browser() {
   const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
+  const {tag} = router.query;
 
-  const handleInputChange = (event: any) => {
+  useEffect(() => {
+    if (tag) {
+      setSearchTerm(tag as string);
+    }
+  }, [tag]);
+
+   const handleInputChange = (event: any) => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearch = async () => {
-    const photos = await CallSearchPhotosByTag(searchTerm);
-    setInterestingList(photos);
+    if (searchTerm && searchTerm.trim() !== '') {
+      await router.push(`/tag/${encodeURIComponent(searchTerm)}`);
+    }
   }
 
   const handleKeyPress = async (event: any) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && searchTerm && searchTerm.trim() !== '') {
       event.preventDefault();
       await handleSearch();
     }

@@ -1,5 +1,6 @@
 import {Button} from "@mui/material";
 import {styled} from '@mui/material/styles';
+import {useRouter} from "next/router";
 
 interface TagProps {
   title: string;
@@ -18,11 +19,18 @@ const ResponsiveButton = styled(Button)(({theme}) => ({
 }));
 
 export default function Tag({title}: TagProps) {
+  const router = useRouter();
+
+  const handleClick = async () => {
+    await router.push(`/tag/${encodeURIComponent(title)}`);
+  }
+
   return (
     <ResponsiveButton
       variant="outlined"
+      onClick={handleClick}
     >
-      {title}
+      {title.length < 15 ? title : title.slice(0, 10) + '...'}
     </ResponsiveButton>
   )
 }

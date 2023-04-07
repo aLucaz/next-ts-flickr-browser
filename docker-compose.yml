@@ -5,4 +5,4 @@ services:
     ports:
       - 4000:4000
     environment:
-      - FLICKR_API_KEY=9a814ef1051f84f312a7f7050d1f8da0
+      - FLICKR_API_KEY=${FLICKR_API_KEY}

@@ -2,6 +2,21 @@ import {IconButton, InputBase, Paper} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import Typography from "@mui/material/Typography";
+import {styled} from "@mui/material/styles";
+
+const TypoBrowser = styled(Typography)(({theme}) => ({
+  fontStyle: 'italic',
+  [theme.breakpoints.up('xs')]: {
+    flex: .8,
+    textAlign: 'center',
+    fontSize: '8px',
+  },
+  [theme.breakpoints.up('md')]: {
+    flex: .7,
+    fontSize: '12px',
+  },
+}));
 
 export default function Browser() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +29,7 @@ export default function Browser() {
     }
   }, [tag]);
 
-   const handleInputChange = (event: any) => {
+  const handleInputChange = (event: any) => {
     setSearchTerm(event.target.value);
   };
 
@@ -34,7 +49,7 @@ export default function Browser() {
   return (
     <Paper
       component="form"
-      sx={{p: '2px 4px', display: 'flex', alignItems: 'center', width: '80%'}}
+      sx={{p: '2px 4px', display: 'flex', alignItems: 'center', width: '90%'}}
     >
       <InputBase
         value={searchTerm}
@@ -43,9 +58,11 @@ export default function Browser() {
         sx={{ml: 1, flex: 1}}
         placeholder="Search by tag... 👀"
       />
-      <p style={{fontSize: '12px', fontStyle: 'italic', textAlign: 'center'}}>
+      <TypoBrowser
+        variant={"caption"}
+      >
         Enter your keywords separated by space
-      </p>
+      </TypoBrowser>
       <IconButton type="button" sx={{p: '10px'}} aria-label="search" onClick={handleSearch}>
         <SearchIcon/>
       </IconButton>
